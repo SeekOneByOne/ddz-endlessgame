@@ -144,20 +144,42 @@ html,body{height:100%}               /* 关键：根元素 100% */
 }
 .history-btn:hover,
 #reset-game:hover {
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 /* 历史按钮始终在最右下角 */
 .history-btn {
-  bottom: 20px;
+  bottom: 45%;
 }
 
 /* 重新开始按钮紧贴历史按钮上方 */
 #reset-game {
-  bottom: 90px;   /* 20px 间距 + 60px 按钮自身高度 */
+  bottom: 45%;   /* 20px 间距 + 60px 按钮自身高度 */
+  left : 20px;
 }
 
 .player-area.active-turn {
   box-shadow: 0 0 15px #f1c40f;
   background: rgba(241, 196, 15, 0.15);
+}
+
+/* 已选手牌区域：单行、无滚动、卡片自动缩小 */
+.selected-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;        /* 禁用滚动 */
+  padding: 4px 2px;
+  gap: 0;
+}
+
+/* 卡片可压缩，最小 32 px，重叠依旧 */
+.selected-cards .card {
+  flex: 0 1 40px;          /* 允许缩小到 32 px */
+  height: 60px;            /* 高度同步减小 */
+  margin-left: -18px;      /* 重叠量 */
+}
+.selected-cards .card:first-child {
+  margin-left: 0;
 }

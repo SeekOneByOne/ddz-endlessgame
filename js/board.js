@@ -115,3 +115,4 @@ function renderPlayed() {
 function symbol(s){return {heart:'♥',diamond:'♦',spade:'♠',club:'♣'}[s]||'';}
 
 document.getElementById('reset-game').addEventListener('click', () => location.reload());;
+

@@ -168,11 +168,21 @@
     }
     
     .played-cards-container {
-      flex: 0 0 20%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex: auto;      /* 原来 flex:1 或 auto，现在固定 120px（可再调小） */
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:0px 0;        /* 上下内边距压缩到 5px */
+      gap:0px;              /* 三行文字/牌之间的空隙再挤紧 */
     }
+
+    /* 一次性把三条缝隙压到 2px */
+  .played-cards-container > .status,
+  .played-cards-container > .played-cards{
+    margin: 2px 0;   /* 原来是 15px 或 5px，现在 2px */
+    line-height: 1;  /* 文字行高也压缩 */
+  }
     
     .self {
       flex: 0 0 25%;
@@ -240,10 +250,11 @@
         </div>
       </div>
 
-      <button class="action-btn" id="reset-game">重</button>
     </div>
 
-    <!-- 历史 -->
+    <!-- 历史 -->     
+    <button class="action-btn" id="reset-game">重</button>
+
     <button class="history-btn" id="history-btn">📜</button>
     <div class="history-modal" id="history-modal">
       <div class="history-content">

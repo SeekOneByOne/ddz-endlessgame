@@ -4,7 +4,7 @@ import { startBoard } from './board.js';
 const nums  = ['3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A', '2'];
 const suits = ['heart', 'diamond', 'spade', 'club'];
 const kings = ['小', '大'];
-
+const order = { '3':1,'4':2,'5':3,'6':4,'7':5,'8':6,'9':7,'10':8,'J':9,'Q':10,'K':11,'A':12,'2':13,'小':14,'大':15 };
 /* ---------- 库存 ---------- */
 const stock = Object.fromEntries([
   ...nums.map(v => [v, 4]),
@@ -74,16 +74,18 @@ function renderSelected() {
   ['self', 'opponent'].forEach(p => {
     const box = document.getElementById(`${p}-selected-cards`);
     box.innerHTML = '';
-    selectedCards[p].forEach(c => {
+
+      // ↓↓↓ 改成降序
+    const sorted = [...selectedCards[p]].sort(
+      (a, b) => order[b.value] - order[a.value]
+    );
+
+    sorted.forEach(c => {
       const isJoker = !c.suit;
       const el = document.createElement('div');
       el.className = isJoker ? 'card joker' : `card ${c.suit}`;
       el.innerHTML = `
         <div class="corner top-left">
-          <span class="num">${c.value}</span>
-          ${!isJoker ? `<span class="suit ${c.suit}">${symbol(c.suit)}</span>` : ''}
-        </div>
-        <div class="corner bottom-right">
           <span class="num">${c.value}</span>
           ${!isJoker ? `<span class="suit ${c.suit}">${symbol(c.suit)}</span>` : ''}
         </div>
@@ -131,4 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
     saveCards();           // 开始游戏前再存一次
     startBoard(selectedCards.self, selectedCards.opponent);
   });
+});
+
+window.addEventListener('load', () => {
+  const h = window.innerHeight;
+  document.querySelector('.history-btn').style.bottom = (h * 0.45) + 'px';
+  document.getElementById('reset-game').style.bottom  = (h * 0.45) + 'px';
 });
