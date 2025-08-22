@@ -1,0 +1,74 @@
+/* ========== 通用牌样式 ========== */
+.card {
+  position: relative;
+  width: 56px;
+  height: 80px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  margin-left: -25px;        /* 重叠效果 */
+  user-select: none;
+}
+.card:first-child { margin-left: 0; }
+
+/* 四角定位容器 */
+.corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+}
+.top-left {
+  top: 4px;
+  left: 4px;
+}
+.bottom-right {
+  bottom: 4px;
+  right: 4px;
+  transform: rotate(180deg);   /* 颠倒 */
+}
+
+/* 花色颜色 */
+.heart .suit, .diamond .suit { color: #e74c3c; }
+.spade .suit, .club .suit   { color: #2c3e50; }
+
+/* 大小王特殊背景 */
+.card.joker {
+  background: linear-gradient(135deg,#2980b9,#3498db);
+  color: #fff;
+  border-color: #2980b9;
+}
+.card.joker .corner {
+  color: #fff;
+}
+
+/* 点数字体 */
+.num { font-size: 20px; }
+.suit { font-size: 12px; margin-top: 1px; }
+
+
+/* 让数字颜色跟随花色 */
+.card.heart   .num,
+.card.diamond .num { color: #e74c3c; }
+
+.card.spade   .num,
+.card.club    .num { color: #2c3e50; }
+
+.card.joker   .num { color: #fff; }
+
+.card.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.card.selected-opponent {
+  transform: translateY(30px);   /* 朝屏幕上方抬 */
+}
+
+.card.selected-self {
+  transform: translateY(-30px);  /* 朝屏幕上方抬 */
+}

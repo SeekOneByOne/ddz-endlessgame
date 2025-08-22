@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <title>斗地主残局</title>
+  <link rel="stylesheet" href="css/card.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+  <div class="container">
+    <!-- 设置手牌 -->
+    <div class="setup-screen" id="setup-screen">
+      <h2>设置手牌</h2>
+      <div class="card-selector" id="card-selector"></div>
+
+      <div class="player-setup self-setup active-player" id="self-setup">
+        <div class="player-setup-header"><div class="player-name">我方手牌</div></div>
+        <div class="selected-cards" id="self-selected-cards"></div>
+        <button class="clear-btn" id="self-clear">清空</button>
+      </div>
+
+      <div class="player-setup opponent-setup" id="opponent-setup">
+        <div class="player-setup-header"><div class="player-name">对方手牌</div></div>
+        <div class="selected-cards" id="opponent-selected-cards"></div>
+        <button class="clear-btn" id="opponent-clear">清空</button>
+      </div>
+
+      <button id="start-game">开始游戏</button>
+    </div>
+
+    <!-- 游戏区域 -->
+    <div class="game-area" id="game-area">
+      <!-- 对方 -->
+      <div class="player-area opponent" id="opponent-area">
+        <div class="controls">
+          <button class="pass-btn" id="opponent-pass-btn" style="transform: rotate(180deg);">要不起</button>
+          <button class="play-btn" id="opponent-play-btn" style="transform: rotate(180deg);">出牌</button>
+        </div>
+        <div class="player-message" id="opponent-message"></div>   
+        <div class="cards-container" id="opponent-cards"></div>
+        <div class="player-header"><div class="player-name" style="transform: rotate(180deg);">对方牌区</div></div>
+      </div>
+
+      <div class="status" id="game-status-opponent" style="transform: rotate(180deg);">游戏开始！请轮流出牌</div>
+      <div class="played-cards" id="played-cards">已出牌区域</div>
+      <div class="status" id="game-status-self">游戏开始！请轮流出牌</div>
+      <!-- 己方 -->
+      <div class="player-area self" id="self-area">
+        <div class="player-header"><div class="player-name">我方牌区</div></div>
+        <div class="cards-container" id="self-cards"></div>
+        <div class="player-message" id="self-message"></div>
+        <div class="controls">
+          <button class="play-btn" id="self-play-btn" disabled>出牌</button>
+          <button class="pass-btn" id="self-pass-btn" disabled>要不起</button>
+        </div>
+      </div>
+
+      <button class="action-btn" id="reset-game">重新开始</button>
+    </div>
+
+    <!-- 历史 -->
+    <button class="history-btn" id="history-btn">📜</button>
+    <div class="history-modal" id="history-modal">
+      <div class="history-content">
+        <div class="history-header">
+          <div class="history-title">出牌记录</div>
+          <button class="close-btn" id="close-history">×</button>
+        </div>
+        <ul class="history-list" id="history-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/setup.js"></script>
+  <script type="module" src="js/opponent.js"></script>
+</body>
+</html>
