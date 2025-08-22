@@ -9,7 +9,7 @@ const order = { '3':1,'4':2,'5':3,'6':4,'7':5,'8':6,'9':7,'10':8,'J':9,'Q':10,'K
 export function renderOpponent() {
   const box = document.getElementById('opponent-cards');
   box.innerHTML = '';
-  const sorted = [...gameState.opponentCards].sort((a, b) => order[a.value] - order[b.value]);
+  const sorted = [...gameState.opponentCards].sort((a, b) => order[b.value] - order[a.value]);
   sorted.forEach(card => {
     const el = document.createElement('div');
     const isJoker = card.value === '小' || card.value === '大';
@@ -32,7 +32,7 @@ export function renderOpponent() {
     `;
     el.style.position = 'relative';
     el.style.left = `${sorted.indexOf(card) * 0}px`;
-    el.style.zIndex = sorted.length - sorted.indexOf(card);
+    //el.style.zIndex = sorted.length - sorted.indexOf(card);
 
     el.addEventListener('click', () =>{
         el.classList.toggle('selected-opponent');

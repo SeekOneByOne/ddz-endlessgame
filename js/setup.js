@@ -24,6 +24,14 @@ function loadCards() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (saved) selectedCards = saved;
+
+    for (const player of ['self', 'opponent']) {
+      selectedCards[player].forEach(card => {
+        if (stock[card.value] > 0) {
+          stock[card.value]--;
+        }
+      });
+    }
   } catch (e) {
     /* 忽略损坏的缓存 */
   }

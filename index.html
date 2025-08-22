@@ -17,30 +17,31 @@
       .game-area {
         flex-direction: column;
         height: 100vh;
-        overflow: hidden;
+        overflow: visible;
         padding: 5px;
       }
       
       /* 调整玩家区域大小 */
       .player-area {
-        flex: 0 0 auto;
-        padding: 8px;
-        margin-bottom: 5px;
+        display:flex;
+        flex-direction:column;
+        padding:0;          /* 原来 15px → 0，空隙更紧 */
       }
       
       /* 调整卡片容器 */
       .cards-container {
-        min-height: 60px;
+        flex:1 1 auto;
+        min-height:120px;   /* 保持之前加大的高度 */
         padding: 5px;
-        overflow-x: auto;
+        overflow: visible;
         white-space: nowrap;
       }
       
       /* 调整卡片大小以适应移动设备 */
       .card {
-        width: 40px;
-        height: 60px;
-        margin-left: -15px;
+        width: 91px;
+        height: 130px;
+        margin-left: -20px;
       }
       
       .card:first-child {
@@ -69,7 +70,11 @@
       }
       
       .controls {
-        gap: 5px;
+        flex:0 0 auto;
+        display:flex;
+        justify-content:center;
+        gap:5px;
+        padding:5px;
       }
       
       /* 设置区域优化 */
@@ -83,9 +88,9 @@
       }
       
       .value-btn {
-        width: 40px;
-        height: 60px;
-        font-size: 0.8rem;
+        width: 60px;
+        height: 85px;
+        font-size: 1rem;
         margin: 2px;
       }
       
@@ -111,9 +116,9 @@
     @media (max-width: 480px) {
       /* 进一步调整超小屏幕 */
       .card {
-        width: 35px;
-        height: 50px;
-        margin-left: -12px;
+        width: 60px;
+        height: 85px;
+        margin-left: -15px;
       }
       
       .value-btn {
@@ -209,17 +214,17 @@
     <div class="game-area" id="game-area" style="display :none">
       <!-- 对方 -->
       <div class="player-area opponent" id="opponent-area">
-        <div class="controls">
-          <button class="pass-btn" id="opponent-pass-btn" style="transform: rotate(180deg);">要不起</button>
-          <button class="play-btn" id="opponent-play-btn" style="transform: rotate(180deg);">出牌</button>
-        </div>
-        <div class="player-message" id="opponent-message"></div>   
+        <div class="player-header"><div class="player-name" style="transform: rotate(0deg);">对方牌区</div></div>
         <div class="cards-container" id="opponent-cards"></div>
-        <div class="player-header"><div class="player-name" style="transform: rotate(180deg);">对方牌区</div></div>
+        <div class="player-message" id="opponent-message"></div>   
+        <div class="controls">
+          <button class="pass-btn" id="opponent-pass-btn" style="transform: rotate(0deg);">要不起</button>
+          <button class="play-btn" id="opponent-play-btn" style="transform: rotate(0deg);">出牌</button>
+        </div>       
       </div>
 
       <div class="played-cards-container">
-        <div class="status" id="game-status-opponent" style="transform: rotate(180deg);">游戏开始！请轮流出牌</div>
+        <div class="status" id="game-status-opponent" style="transform: rotate(0deg);">游戏开始！请轮流出牌</div>
         <div class="played-cards" id="played-cards">已出牌区域</div>
         <div class="status" id="game-status-self">游戏开始！请轮流出牌</div>
       </div>
@@ -235,7 +240,7 @@
         </div>
       </div>
 
-      <button class="action-btn" id="reset-game">重新开始</button>
+      <button class="action-btn" id="reset-game">重</button>
     </div>
 
     <!-- 历史 -->

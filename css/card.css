@@ -1,8 +1,8 @@
 /* ========== 通用牌样式 ========== */
 .card {
   position: relative;
-  width: 56px;
-  height: 80px;
+  width: 70px;
+  height: 100px;
   background: #fff;
   border: 1px solid #000;
   border-radius: 6px;
@@ -47,7 +47,7 @@
 }
 
 /* 点数字体 */
-.num { font-size: 20px; }
+.num { font-size: 25px; }
 .suit { font-size: 12px; margin-top: 1px; }
 
 
@@ -66,7 +66,7 @@
 }
 
 .card.selected-opponent {
-  transform: translateY(30px);   /* 朝屏幕上方抬 */
+  transform: translateY(-30px);   /* 朝屏幕上方抬 */
 }
 
 .card.selected-self {
