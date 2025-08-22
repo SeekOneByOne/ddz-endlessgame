@@ -156,3 +156,8 @@ html,body{height:100%}               /* 关键：根元素 100% */
 #reset-game {
   bottom: 90px;   /* 20px 间距 + 60px 按钮自身高度 */
 }
+
+.player-area.active-turn {
+  box-shadow: 0 0 15px #f1c40f;
+  background: rgba(241, 196, 15, 0.15);
+}
